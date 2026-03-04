@@ -40,13 +40,22 @@ export async function proxy(request: NextRequest) {
   const needsAdmin = ADMIN_PATHS.some(p => pathname.startsWith(p))
   const needsPartner = PARTNER_PATHS.some(p => pathname.startsWith(p))
 
-  if ((needsAuth || needsAdmin || needsPartner) && !user) {
+  // Admin password cookie bypasses Supabase auth for /admin/* routes
+  const adminSession = request.cookies.get('admin_session')?.value
+  const adminPassword = process.env.ADMIN_PASSWORD
+  const hasAdminCookie = !!(adminPassword && adminSession === adminPassword)
+
+  if ((needsAuth || needsPartner) && !user) {
     const loginUrl = new URL('/login', request.url)
     loginUrl.searchParams.set('returnTo', pathname)
     return NextResponse.redirect(loginUrl)
   }
 
-  // Role-based protection
+  if (needsAdmin && !user && !hasAdminCookie) {
+    return NextResponse.redirect(new URL('/portal', request.url))
+  }
+
+  // Role-based protection (Supabase users only — cookie holders get full admin access)
   if ((needsAdmin || needsPartner) && user) {
     const { data: profile } = await supabase
       .from('users')
