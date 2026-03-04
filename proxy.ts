@@ -9,6 +9,14 @@ const ADMIN_PATHS = ['/admin']
 const PARTNER_PATHS = ['/partner']
 
 export async function proxy(request: NextRequest) {
+  // Handle OAuth callback: redirect auth codes to /auth/callback
+  const code = request.nextUrl.searchParams.get('code')
+  if (code && request.nextUrl.pathname !== '/auth/callback') {
+    const callbackUrl = request.nextUrl.clone()
+    callbackUrl.pathname = '/auth/callback'
+    return NextResponse.redirect(callbackUrl)
+  }
+
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
