@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "openmoon-dev",
+      "runtimeExecutable": "/Users/halseyhuth/projects/openmoon/node_modules/.bin/next",
+      "runtimeArgs": ["dev", "--cwd", "/Users/halseyhuth/projects/openmoon"],
+      "port": 3000
+    }
+  ]
+}
