@@ -56,7 +56,7 @@ export async function proxy(request: NextRequest) {
   }
 
   // Role-based protection (Supabase users only — cookie holders get full admin access)
-  if ((needsAdmin || needsPartner) && user) {
+  if ((needsAdmin || needsPartner) && user && !hasAdminCookie) {
     const { data: profile } = await supabase
       .from('users')
       .select('role')

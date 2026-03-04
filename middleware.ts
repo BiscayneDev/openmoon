@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { proxy } from './proxy'
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { searchParams, pathname } = request.nextUrl
 
   // If there's an auth code in the URL and we're NOT already on /auth/callback,
@@ -13,7 +14,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(callbackUrl)
   }
 
-  return NextResponse.next()
+  // Run auth/role protection
+  return proxy(request)
 }
 
 export const config = {
