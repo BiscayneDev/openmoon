@@ -14,18 +14,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: { default: 'OpenMoon', template: '%s | OpenMoon' },
-  description: 'Build with MoonPay Agents. Win $10k USDC + Mac Minis. Every Mooncycle brings new challenges with partner sponsors.',
+  description: 'Build with MoonPay Agents. Win $5k USDC + Mac Minis. Every Mooncycle brings new challenges with partner sponsors.',
   keywords: ['hackathon', 'MoonPay', 'crypto', 'AI agents', 'web3', 'OpenMoon'],
   openGraph: {
     type: 'website',
     title: 'OpenMoon',
-    description: 'Build with MoonPay Agents. Win $10k USDC + Mac Minis.',
+    description: 'Build with MoonPay Agents. Win $5k USDC + Mac Minis.',
     siteName: 'OpenMoon',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'OpenMoon',
-    description: 'Build with MoonPay Agents. Win $10k USDC + Mac Minis.',
+    description: 'Build with MoonPay Agents. Win $5k USDC + Mac Minis.',
   },
 }
 

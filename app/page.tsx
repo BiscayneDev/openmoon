@@ -216,7 +216,7 @@ export default async function HomePage() {
             >
               <div>
                 <h3 className="text-xs font-medium uppercase tracking-widest mb-2" style={{ color: 'rgba(255,255,255,0.55)' }}>Monthly Prize</h3>
-                <p className="text-3xl font-light tracking-tight">$10k USDC</p>
+                <p className="text-3xl font-light tracking-tight">$5k USDC</p>
                 <p className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.55)' }}>+ Mac Mini from MoonPay</p>
               </div>
               <p className="text-sm mt-4" style={{ color: 'rgba(255,255,255,0.55)' }}>
